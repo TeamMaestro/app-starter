@@ -1,0 +1,9 @@
+:host {
+    --active-color: red;
+
+    button {
+        &.active {
+            color: var(--active-color);
+        }
+    }
+}

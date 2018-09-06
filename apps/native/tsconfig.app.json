@@ -1,0 +1,14 @@
+{
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "outDir": "../../dist/out-tsc/apps/native",
+        "types": []
+    },
+    "exclude": [
+        "src/test.ts",
+        "**/*.spec.ts"
+    ],
+    "include": [
+        "**/*.ts"
+    ]
+}

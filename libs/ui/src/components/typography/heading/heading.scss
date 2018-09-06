@@ -1,0 +1,44 @@
+:host {
+    --xsmall-font-size: 13px;
+    --xsmall-font-weight: bold;
+    --small-font-size: 16px;
+    --small-font-weight: bold;
+    --medium-font-size: 18px;
+    --medium-font-weight: bold;
+    --regular-font-size: 22px;
+    --regular-font-weight: bold;
+    --large-font-size: 26px;
+    --large-font-weight: bold;
+    --xlarge-font-size: 30px;
+    --xlarge-font-weight: bold;
+}
+
+.xsmall {
+    font-size: var(--xsmall-font-size);
+    font-weight: var(--xsmall-font-weight);
+}
+
+.small {
+    font-size: var(--small-font-size);
+    font-weight: var(--small-font-weight);
+}
+
+.medium {
+    font-size: var(--medium-font-size);
+    font-weight: var(--medium-font-weight);
+}
+
+.regular {
+    font-size: var(--regular-font-size);
+    font-weight: var(--regular-font-weight);
+}
+
+.large {
+    font-size: var(--large-font-size);
+    font-weight: var(--large-font-weight);
+}
+
+.xlarge {
+    font-size: var(--xlarge-font-size);
+    font-weight: var(--xlarge-font-weight);
+}

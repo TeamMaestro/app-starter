@@ -1,0 +1,30 @@
+{
+  "npmScope": "hive",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": "*",
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "common": {
+      "tags": []
+    },
+    "web": {
+      "tags": []
+    },
+    "web-e2e": {
+      "tags": []
+    },
+    "native": {
+      "tags": []
+    },
+    "native-e2e": {
+      "tags": []
+    },
+    "components": {
+      "tags": []
+    }
+  }
+}

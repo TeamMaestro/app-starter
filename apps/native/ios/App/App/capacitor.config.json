@@ -1,0 +1,18 @@
+{
+    "appId": "com.example.app",
+    "rootDir": "../../",
+    "appName": "App",
+    "bundledWebRuntime": false,
+    "webDir": "dist/apps/native",
+    "plugins": {
+        "SplashScreen": {
+            "launchShowDuration": 10000
+        }
+    },
+    "ios": {
+        "platformDir": "apps/native/ios"
+    },
+    "android": {
+        "platformDir": "apps/native/android"
+    }
+}
