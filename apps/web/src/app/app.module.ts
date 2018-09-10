@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { NxModule } from '@nrwl/nx';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { IonicModule } from '@ionic/angular';
-import { CommonModule } from '@hive/common';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { CommonModule, createTranslateLoader } from '@hive/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,8 +15,16 @@ import { AppComponent } from './app.component';
         BrowserModule,
         AppRoutingModule,
         CommonModule,
+        HttpClientModule,
         NxModule.forRoot(),
-        IonicModule.forRoot()
+        IonicModule.forRoot(),
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: (createTranslateLoader),
+                deps: [HttpClient]
+            }
+        })
     ],
     providers: [],
     bootstrap: [AppComponent],

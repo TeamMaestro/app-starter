@@ -1,10 +1,10 @@
 <app-tabbar>
     <app-tab-button
-        label="Dashboard"
+        [label]="'nav.dashboard' | translate"
         icon="home"
         href="/tabs/dashboard"></app-tab-button>
     <app-tab-button
-        label="Content"
+        [label]="'nav.content' | translate"
         icon="apps"
         href="/tabs/content"></app-tab-button>
 </app-tabbar>

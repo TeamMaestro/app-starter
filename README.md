@@ -34,6 +34,7 @@ Stencil based web components allow you to create core UI elements and immediatel
 - [Capacitor](https://capacitor.ionicframework.com/)
 - [StencilJS](https://stenciljs.com/)
 - [Catalog](https://docs.catalog.style/)
+- [Compodoc](https://github.com/compodoc/compodoc)
 
 ## Getting Started
 

@@ -53,6 +53,11 @@
                                 "glob": "**/*.svg",
                                 "input": "node_modules/@ionic/angular/dist/ionic/svg",
                                 "output": "svg"
+                            },
+                            {
+                                "glob": "**/*",
+                                "input": "i18n",
+                                "output": "assets/i18n"
                             }
                         ],
                         "styles": [
@@ -175,6 +180,11 @@
                                 "glob": "**/*.svg",
                                 "input": "node_modules/@ionic/angular/dist/ionic/svg",
                                 "output": "svg"
+                            },
+                            {
+                                "glob": "**/*",
+                                "input": "i18n",
+                                "output": "assets/i18n"
                             }
                         ],
                         "styles": [
