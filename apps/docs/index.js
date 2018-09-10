@@ -18,6 +18,11 @@ const pages = [{
     title: 'Welcome',
     content: pageLoader(() =>
         import('./WELCOME.md'))
+}, {
+    path: 'colors',
+    title: 'Colors',
+    content: pageLoader(() =>
+        import('./COLORS.md'))
 }];
 
 const theme = {

@@ -6,12 +6,14 @@ import { NxModule } from '@nrwl/nx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { CommonModule } from '@hive/common';
 
 @NgModule({
     declarations: [AppComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,
+        CommonModule,
         NxModule.forRoot(),
         IonicModule.forRoot()
     ],
@@ -19,4 +21,4 @@ import { AppRoutingModule } from './app-routing.module';
     bootstrap: [AppComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class AppModule {}
+export class AppModule { }

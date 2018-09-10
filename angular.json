@@ -48,7 +48,12 @@
                         "tsConfig": "apps/web/tsconfig.app.json",
                         "assets": [
                             "apps/web/src/favicon.ico",
-                            "apps/web/src/assets"
+                            "apps/web/src/assets",
+                            {
+                                "glob": "**/*.svg",
+                                "input": "node_modules/@ionic/angular/dist/ionic/svg",
+                                "output": "svg"
+                            }
                         ],
                         "styles": [
                             "apps/web/src/styles.scss"

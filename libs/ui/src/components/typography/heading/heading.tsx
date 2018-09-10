@@ -5,7 +5,7 @@ import { Component, Element, Prop } from '@stencil/core';
     styleUrl: 'heading.scss',
     shadow: true
 })
-export class HeadingComponent {
+export class UIHeadingComponent {
 
     @Element()
     private element: HTMLElement;
