@@ -1,6 +1,6 @@
 {
     "name": "@teamhive/app-starter",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "license": "MIT",
     "scripts": {
         "ng": "ng",
@@ -14,6 +14,8 @@
         "native:sync": "cd apps/native && npx cap copy",
         "update:ios": "cd apps/native && npx cap update ios",
         "open:ios": "cd apps/native && npx cap open ios",
+        "update:android": "cd apps/native && npx cap update android",
+        "open:android": "cd apps/native && npx cap open android",
         "npx": "npx",
         "build": "ng build",
         "test": "ng test",
@@ -35,7 +37,10 @@
         "dep-graph": "./node_modules/.bin/nx dep-graph",
         "help": "./node_modules/.bin/nx help",
         "docs:sync": "node ./tools/scripts/catalog-sync.js",
-        "postinstall": "node ./tools/scripts/catalog-rewrite.js && node ./tools/scripts/capacitor-rewrite.js"
+        "postinstall": "node ./tools/scripts/catalog-rewrite.js && node ./tools/scripts/capacitor-rewrite.js",
+        "compodoc:web": "compodoc -p apps/web/tsconfig.app.json --output dist/docs/web --theme stripe --hideGenerator",
+        "compodoc:native": "compodoc -p apps/native/tsconfig.app.json --output dist/docs/native --theme stripe --hideGenerator",
+        "compodoc:libs": "compodoc -p libs/common/tsconfig.lib.json --output dist/docs/libs --theme stripe --hideGenerator"
     },
     "private": true,
     "dependencies": {
@@ -56,6 +61,8 @@
         "@ngrx/effects": "6.0.1",
         "@ngrx/router-store": "6.0.1",
         "@ngrx/store": "6.0.1",
+        "@ngx-translate/core": "^10.0.2",
+        "@ngx-translate/http-loader": "^3.0.1",
         "@nrwl/nx": "6.3.0",
         "core-js": "^2.5.4",
         "rxjs": "^6.0.0",
@@ -66,13 +73,14 @@
         "@angular/cli": "6.1.2",
         "@angular/compiler-cli": "^6.1.0",
         "@angular/language-service": "^6.1.0",
+        "@compodoc/compodoc": "^1.1.5",
         "@ngrx/store-devtools": "6.0.1",
         "@nrwl/schematics": "6.3.0",
         "@stencil/core": "^0.11.0",
         "@stencil/sass": "^0.1.0",
+        "@types/core-js": "^0.9.46",
         "@types/jasmine": "~2.8.6",
         "@types/jasminewd2": "~2.0.3",
-        "@types/core-js": "^0.9.46",
         "@types/node": "~10.0.4",
         "catalog": "^3.0.0-rc.4",
         "codelyzer": "~4.2.1",

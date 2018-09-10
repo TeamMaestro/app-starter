@@ -1,3 +1,5 @@
 <button [routerLink]="href" routerLinkActive="active">
-    {{ label }}
+    <ion-icon *ngIf="icon"
+        [icon]="icon"></ion-icon>
+    <ui-text small bold>{{ label }}</ui-text>
 </button>

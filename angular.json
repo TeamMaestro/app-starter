@@ -48,7 +48,17 @@
                         "tsConfig": "apps/web/tsconfig.app.json",
                         "assets": [
                             "apps/web/src/favicon.ico",
-                            "apps/web/src/assets"
+                            "apps/web/src/assets",
+                            {
+                                "glob": "**/*.svg",
+                                "input": "node_modules/@ionic/angular/dist/ionic/svg",
+                                "output": "svg"
+                            },
+                            {
+                                "glob": "**/*",
+                                "input": "i18n",
+                                "output": "assets/i18n"
+                            }
                         ],
                         "styles": [
                             "apps/web/src/styles.scss"
@@ -170,6 +180,11 @@
                                 "glob": "**/*.svg",
                                 "input": "node_modules/@ionic/angular/dist/ionic/svg",
                                 "output": "svg"
+                            },
+                            {
+                                "glob": "**/*",
+                                "input": "i18n",
+                                "output": "assets/i18n"
                             }
                         ],
                         "styles": [

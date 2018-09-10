@@ -89,7 +89,7 @@
         "use-pipe-transform-interface": true,
         "component-class-suffix": true,
         "directive-class-suffix": true,
-        "quotemark": [true, "single"],
+        "quotemark": [true, "single", "jsx-double"],
 
         "nx-enforce-module-boundaries": [
             true,
