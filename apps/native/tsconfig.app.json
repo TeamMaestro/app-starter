@@ -2,7 +2,7 @@
     "extends": "../../tsconfig.json",
     "compilerOptions": {
         "outDir": "../../dist/out-tsc/apps/native",
-        "types": []
+        "types": ["node"]
     },
     "exclude": [
         "src/test.ts",
