@@ -80,17 +80,28 @@
                             "extractLicenses": true,
                             "vendorChunk": false,
                             "buildOptimizer": true
+                        },
+                        "hmr": {
+                            "fileReplacements": [{
+                                "replace": "apps/web/src/environments/environment.ts",
+                                "with": "apps/web/src/environments/environment.hmr.ts"
+                            }]
                         }
                     }
                 },
                 "serve": {
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "options": {
-                        "browserTarget": "web:build"
+                        "browserTarget": "web:build",
+                        "hmrWarning": false
                     },
                     "configurations": {
                         "production": {
                             "browserTarget": "web:build:production"
+                        },
+                        "hmr": {
+                            "hmr": true,
+                            "browserTarget": "web:build:hmr"
                         }
                     }
                 },
@@ -207,17 +218,28 @@
                             "extractLicenses": true,
                             "vendorChunk": false,
                             "buildOptimizer": true
+                        },
+                        "hmr": {
+                            "fileReplacements": [{
+                                "replace": "apps/native/src/environments/environment.ts",
+                                "with": "apps/native/src/environments/environment.hmr.ts"
+                            }]
                         }
                     }
                 },
                 "serve": {
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "options": {
-                        "browserTarget": "native:build"
+                        "browserTarget": "native:build",
+                        "hmrWarning": false
                     },
                     "configurations": {
                         "production": {
                             "browserTarget": "native:build:production"
+                        },
+                        "hmr": {
+                            "hmr": true,
+                            "browserTarget": "native:build:hmr"
                         }
                     }
                 },
