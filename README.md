@@ -35,8 +35,13 @@ Stencil based web components allow you to create core UI elements and immediatel
 - [StencilJS](https://stenciljs.com/)
 - [Catalog](https://docs.catalog.style/)
 - [Compodoc](https://github.com/compodoc/compodoc)
+- HMR (Hot Module Replacement)
 
 ## Getting Started
+
+### Articles
+- [Testing](https://github.com/TeamHive/app-starter/wiki/Testing)
+
 
 #### 1. Clone this project
 ```
