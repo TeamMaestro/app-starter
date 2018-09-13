@@ -9,11 +9,9 @@ import {
     defineCustomElements
 } from '@hive/ui';
 
-import PAGES_CONFIG from './generated/pages.json';
+import generatedPages from './generated/pages.json';
 
-const UI_VARIABLES = require('@hive/ui/dist/ui-kit.css');
-
-const pages = [{
+const staticPages = [{
     path: '/',
     title: 'Welcome',
     content: pageLoader(() =>
@@ -25,6 +23,8 @@ const pages = [{
         import('./COLORS.md'))
 }];
 
+require('@hive/ui/dist/ui-kit.css');
+
 const theme = {
     pageHeadingBackground: '#3F4056',
     brandColor: '#3F4056',
@@ -34,31 +34,25 @@ const theme = {
     sidebarColorText: '#AFAFB7',
     sidebarColorTextActive: '#3F4056',
     sidebarColorHeading: '#3F4056',
-
-    // fontFamily: 'Whitney SSm Am, Whitney SSm B, Helvetica Neue'
 }
 
 function getCatalog() {
-    for (let page of PAGES_CONFIG) {
-        let newPage = {
+    return [...staticPages, ...generatedPages.map(page => {
+        return {
             path: page.path,
             title: page.title,
-            pages: []
+            ...(page.markdownFile && {content: pageLoader(() => import (`./generated/${page.markdownFile}`))}),
+            ...((page.pages && page.pages.length > 0) && {pages: page.pages.map(child => {
+                    return {
+                        path: child.path,
+                        title: child.title,
+                        content: pageLoader(() =>
+                            import (`./generated/${child.markdownFile}`))
+                    }
+                })
+            })
         }
-        if (page.pages) {
-            for (let child of page.pages) {
-                newPage.pages.push({
-                    styles: [UI_VARIABLES],
-                    path: child.path,
-                    title: child.title,
-                    content: pageLoader(() =>
-                        import (`./generated/${child.markdownFile}`))
-                });
-            }
-        }
-        pages.push(newPage);
-    }
-    return pages;
+    })]
 }
 
 ReactDOM.render( <

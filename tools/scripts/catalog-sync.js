@@ -72,6 +72,13 @@ function getCatalogParent(destinationPath) {
     let originalPath = destinationPath.replace(destinationDir, '');
 
     let path = originalPath.substr(0, originalPath.lastIndexOf('/'));
+
+    if (path.indexOf('/') === -1) {
+        if (!pageParentExists(pages, path)) {
+            writeParentPage(pages, path, originalPath);
+        }
+    }
+
     while (path.indexOf('/') !== -1) {
         const folder = path.substr(0, path.indexOf('/'));
 
@@ -106,11 +113,12 @@ function pageParentExists(pages, title) {
     return exists;
 }
 
-function writeParentPage(pages, title) {
+function writeParentPage(pages, title, markdownFile) {
     pages.push({
         path: title.toLowerCase(),
-        title: title.substr(0, 1).toUpperCase() + title.substr(1),
-        pages: []
+        title: formatPageTitle(title),
+        pages: [],
+        ...(markdownFile && {markdownFile: markdownFile})
     });
 }
 
@@ -123,11 +131,27 @@ function appendToPageTree(newPageName, destinationPath, parents) {
             return child.path.indexOf(newPageName) !== -1;
         });
         if (childIndex === -1) {
+            if (pages[parentIndex].markdownFile) {
+                let title = formatPageTitle(pages[parentIndex].markdownFile.split('/')
+                    [pages[parentIndex].markdownFile.split('/').length - 1]
+                    .split('.')[0]);
+                pages[parentIndex].pages.push({
+                    title: title,
+                    path: pages[parentIndex].path,
+                    markdownFile: pages[parentIndex].markdownFile
+                });
+                delete pages[parentIndex].markdownFile;
+            }
             pages[parentIndex].pages.push({
-                title: newPageName.substr(0, 1).toUpperCase() + newPageName.substr(1),
-                path: newPageName,
+                title: formatPageTitle(newPageName),
+                path: `${pages[parentIndex].path}/${newPageName}`,
                 markdownFile: destinationPath
             });
         }
     }
+}
+
+function formatPageTitle(title) {
+    title = title.replace(/-/g, ' ');
+    return title.substr(0, 1).toUpperCase() + title.substr(1)
 }
