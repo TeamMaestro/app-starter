@@ -43,6 +43,9 @@ fs.readFile(capacitoriOSUpdatePath, 'utf8', function (err, data) {
     }
     data = data.replace(/config.app.rootDir, config.ios.name, projectName/g, 'process.cwd(), config.ios.name, projectName');
     data = data.replace('cd "${config.app.rootDir}"', 'cd "${process.cwd()}"');
+
+    data = data.replace(new RegExp('\'../../node_modules', 'g'), '\'../../../../node_modules');
+
     fs.writeFile(capacitoriOSUpdatePath, data, 'utf8', function (err) {
         if (err) {
             return console.error(err);
