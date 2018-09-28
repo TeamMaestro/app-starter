@@ -100,7 +100,7 @@ function pageParentExists(pages, title) {
     for (let i = 0; i < pages.length; i++) {
         const page = pages[i];
         // If the page title matches and the page has children, it already exists
-        if (page.title.toLowerCase() === title.toLowerCase() && page.pages) {
+        if (page.title.toLowerCase() === title.split('-').join(' ').toLowerCase() && page.pages) {
             exists = true;
             break;
         } else {
@@ -153,5 +153,5 @@ function appendToPageTree(newPageName, destinationPath, parents) {
 
 function formatPageTitle(title) {
     title = title.replace(/-/g, ' ');
-    return title.substr(0, 1).toUpperCase() + title.substr(1)
+    return title.replace(/\b\w/g, l => l.toUpperCase())
 }
