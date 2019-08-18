@@ -1,0 +1,33 @@
+
+:host {
+    --min-height: 30px;
+    --background-color: var(--abbott-color-red-rgb);
+    --color: var(--color-red-offset);
+}
+
+.alert {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: var(--min-height);
+    background-color: rgba(var(--background-color), 0.1);
+    color: var(--color);
+    border-radius: 2px;
+    padding: 0 16px;
+    &-icon {
+        border-radius: 9999px;
+        background-color: rgb(var(--background-color));
+        color: var(--color-white);
+        margin-right: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 12px;
+        height: 12px;
+        hive-ui-icon {
+            width: 8px;
+            height: 8px;
+        }
+    }
+}

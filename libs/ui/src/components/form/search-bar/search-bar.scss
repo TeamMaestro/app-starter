@@ -1,0 +1,40 @@
+
+:host {
+    --width: 240px;
+}
+
+.search-bar {
+    position: relative;
+    width: var(--width);
+    hive-ui-icon {
+        position: absolute;
+        transform: translate(-24px, 50%);
+    }
+    input {
+        height: var(--input-height);
+        width: 100%;
+        border: 1px solid var(--input-border-color);
+
+        border-radius: 2px;
+        background-color: var(--color-white);
+        padding: 0 32px 0 8px;
+        font-size: var(--input-font-size);
+        font-family: var(--header-font-family);
+
+        transition: all .3s;
+
+        &:active,
+        &:focus {
+            outline: 0;
+        }
+
+        &::placeholder {
+            color: var(--color-medium-gray);
+            font-size: var(--input-font-size);
+            font-weight: 500;
+        }
+        &::-webkit-input-placeholder {
+            font-size: var(--input-font-size);
+        }
+    }
+}

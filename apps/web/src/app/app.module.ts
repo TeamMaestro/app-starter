@@ -1,30 +1,34 @@
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireFunctionsModule } from '@angular/fire/functions';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { NxModule } from '@nrwl/nx';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IonicModule } from '@ionic/angular';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { CommonModule, createTranslateLoader } from '@hive/common';
-
+import { TranslateModule } from '@ngx-translate/core';
+import { Angulartics2Module } from 'angulartics2';
+import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SharedModule } from './shared';
 
 @NgModule({
-    declarations: [AppComponent],
+    declarations: [
+        AppComponent,
+    ],
     imports: [
         BrowserModule,
+        BrowserAnimationsModule,
         AppRoutingModule,
-        CommonModule,
-        HttpClientModule,
-        NxModule.forRoot(),
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFirestoreModule,
+        AngularFireAuthModule,
+        AngularFireFunctionsModule,
+        Angulartics2Module.forRoot(),
+        SharedModule,
         IonicModule.forRoot(),
-        TranslateModule.forRoot({
-            loader: {
-                provide: TranslateLoader,
-                useFactory: (createTranslateLoader),
-                deps: [HttpClient]
-            }
-        })
+        TranslateModule.forRoot()
     ],
     providers: [],
     bootstrap: [AppComponent],

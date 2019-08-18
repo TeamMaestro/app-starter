@@ -1,25 +1,51 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
 
-/**
- * Public modules to be shared across all consuming feature modules.
- */
-const SHARED_MODULES = [
-    IonicModule,
-    CommonModule
+const Modules = [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule,
+    TranslateModule,
+    FlexLayoutModule,
+    IonicModule
+];
+
+const EntryComponents = [
+
+];
+
+const Components = [
+    ...EntryComponents,
+];
+
+const Directives = [
+
 ];
 
 @NgModule({
     imports: [
-        TranslateModule.forChild(),
-        ...SHARED_MODULES
+        ...Modules
+    ],
+    declarations: [
+        ...Components,
+        ...Directives,
     ],
     exports: [
-        ...SHARED_MODULES,
-        TranslateModule
+        ...Modules,
+        ...Components,
+        ...Directives
     ],
-    schemas: [CUSTOM_ELEMENTS_SCHEMA]
+    entryComponents: [
+        ...EntryComponents
+    ],
+    schemas: [
+        CUSTOM_ELEMENTS_SCHEMA
+    ]
 })
 export class SharedModule { }

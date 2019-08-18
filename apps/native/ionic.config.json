@@ -1,5 +1,7 @@
 {
-    "name": "native",
-    "type": "angular",
-    "integrations": {}
+    "name": "App",
+    "integrations": {
+        "capacitor": {}
+    },
+    "type": "angular"
 }

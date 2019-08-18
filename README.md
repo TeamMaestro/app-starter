@@ -1,12 +1,10 @@
 <p align="center">
-    <img src="https://avatars1.githubusercontent.com/u/7539657?s=200&v=4">
+    <img width="150px" src="https://user-images.githubusercontent.com/13732623/63229908-7d8a8100-c1d3-11e9-955e-31aff33d07e1.png">
 </p>
 
 # Hive App Starter
 
 Rapidly build web and native (iOS, Android, Desktop) applications using the latest technologies.
-
-_Note_: Documentation and project set-up is still being actively flushed out. This repository is for early adopters to **experiment** with the current configuration.
 
 ## What is the Hive App Starter?
 
@@ -14,66 +12,58 @@ An Angular mono-repository set-up that allows developers to seamlessly share app
 
 ### What makes this seed/starter useful?
 
-#### 1. Web Component UI Kit Documentation
+#### 1. Design System Architecture
 
-Web components with an appropriate README declaration will auto generate into a beautifully designed UI-kit, allowing your development team to quickly discover available components and preview new web components in a pure eco-system.
+Design and develop re-usable web components in a design system that is previewed in Storybook with external integrations and sync operations with [InvisionApp (DSM)](https://www.invisionapp.com/design-system-manager). Works with Web, Angular and React components.
 
-#### 2. Mono-repo Support for Capacitor
 
-Capacitor out-of-the-box does not support targeting multiple apps from a shared Angular schematics set-up. The set-up scripts included allows you to support multiple capacitor apps (`capacitor.config.json` per app directory) and share UI kits and components without nested dependencies in each apps folder.
+#### 2. Nrwl/NX
 
-#### 3. Rapid Prototyping
+Use enterprise mono-repository architecture while building your application. Easily scale your code's architecture to meet your application's needs.
 
-Stencil based web components allow you to create core UI elements and immediately consume them in all your apps (regardless of web/native/desktop). Create consistent user interfaces and avoid time crunch of determining font-sizes, weights, colors, container spacing, etc.
+
+#### 3. We Eat Our Own Cooking
+
+We use this app starter for every application we build. Tested, tweaked and constantly updated to developing best practices. This starter has been used for clients from Abbott Laboratories to SouthWest Airlines.
 
 
 ### Underlying Technologies
 - [Angular](https://angular.io/)
 - [Nx](https://nrwl.io/nx)
-- [Ionic 4 (Beta)](http://ionic-docs.herokuapp.com/docs)
+- [Ionic](https://ionicframework.com/)
 - [Capacitor](https://capacitor.ionicframework.com/)
 - [StencilJS](https://stenciljs.com/)
-- [Catalog](https://docs.catalog.style/)
-- [Compodoc](https://github.com/compodoc/compodoc)
-- HMR (Hot Module Replacement)
+- [Storybook](https://storybook.js.org)
+- [Firebase](https://firebase.google.com)
+- [Algolia](https://www.algolia.com/)
 
 ## Getting Started
 
-### Articles
-- [Testing](https://github.com/TeamHive/app-starter/wiki/Testing)
-
-
-#### 1. Clone this project
+#### Setup
 ```
 git clone https://github.com/TeamHive/app-starter.git projectName
-```
-
-#### 2. Install required dependencies
-```
 cd projectName && npm i
+npm run build:ui
 ```
 
-#### 3. Build Stencil UI
-```
-npm run build-ui
-```
+> You can optionally find-replace `hive` and `app` for your own project's scope. Try to keep your scope between 3-5 characters.
 
-#### 4a. Running Web
+#### Running Web
 ```
 npm run start
 ```
 
-#### 4b. Running Native (serving)
+#### Running Native (serving)
 ```
 npm run start:native
 ```
 
-#### 4c. Building Native
+#### Building Native
 ```
 npm run build:native
 ```
 
-#### 4d. Running Native (iOS)
+#### Running Native (iOS)
 ```
 npm run update:ios && npm run open:ios
 ```

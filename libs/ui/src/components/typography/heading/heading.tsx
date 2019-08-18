@@ -1,53 +1,57 @@
-import { Component, Element, Prop } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
+import { Color } from '../../../interface';
 
 @Component({
-    tag: 'ui-heading',
+    tag: 'hive-ui-heading',
     styleUrl: 'heading.scss',
     shadow: true
 })
-export class UIHeadingComponent {
+export class Heading {
 
-    @Element()
-    private element: HTMLElement;
+    /**
+     * The maximum lines to display before truncating the text.
+     * Default behavior shows all lines of text with no truncation.
+     */
+    @Prop() maxLines: number;
+    /**
+     * The primary color of the label. Uses the branded CSS variables
+     * that are globally available to the application.
+     */
+    @Prop() color: Color;
 
-    @Prop() xlarge: boolean;
-    @Prop() large: boolean;
-    @Prop() medium: boolean;
-    @Prop() small: boolean;
-    @Prop() xsmall: boolean;
+    @Prop({ reflect: true }) xxlarge: boolean;
+    @Prop({ reflect: true }) xlarge: boolean;
+    @Prop({ reflect: true }) large: boolean;
+    @Prop({ reflect: true }) base: boolean;
+    @Prop({ reflect: true }) small: boolean;
+    @Prop({ reflect: true }) xsmall: boolean;
+
+    @Prop({ reflect: true }) xbold: boolean;
+    @Prop({ reflect: true }) bold: boolean;
+    @Prop({ reflect: true }) medium: boolean;
+
+    componentDidLoad() {
+        if (!this.xbold && !this.medium) {
+            this.bold = true;
+        }
+    }
 
     render() {
         return (
-            <span>
-                <slot />
-            </span>
+            <hive-ui-label
+                xxlarge={this.xxlarge}
+                xlarge={this.xlarge}
+                large={this.large}
+                base={this.base}
+                small={this.small}
+                xsmall={this.xsmall}
+                xbold={this.xbold}
+                bold={this.bold}
+                medium={this.medium}
+                color={this.color}
+                maxLines={this.maxLines}>
+                <slot></slot>
+            </hive-ui-label>
         );
-    }
-
-    componentDidLoad() {
-        this._applyHeaderClass();
-    }
-
-    private _applyHeaderClass() {
-        const container = (this.element.shadowRoot || this.element).querySelector('span');
-
-        if (this.element.hasAttribute('xlarge')) {
-            container.classList.add('xlarge');
-        }
-        else if (this.element.hasAttribute('large')) {
-            container.classList.add('large');
-        }
-        else if (this.element.hasAttribute('medium')) {
-            container.classList.add('medium');
-        }
-        else if (this.element.hasAttribute('small')) {
-            container.classList.add('small');
-        }
-        else if (this.element.hasAttribute('xsmall')) {
-            container.classList.add('xsmall');
-        }
-        else {
-            container.classList.add('regular');
-        }
     }
 }

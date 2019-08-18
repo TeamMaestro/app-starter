@@ -1,0 +1,101 @@
+// Button
+// --------------------------------------------------
+:host {
+    /*
+     * @prop --border-radius: The border radius edge of the button
+     */
+    --border-radius: 2px;
+    /*
+     * @prop --height: The display height of the button.
+     */
+    --height: 35px;
+    /**
+     * @prop --inner-padding: The inner padding surrounding the text of the button.
+     **/
+    --inner-padding: 25px;
+    --background-color: initial;
+    --hover-background-color: var(--color-app-light-gray);
+    --color: var(--color-white);
+    --color-hover: var(--background-color);
+    --color-disabled: var(--color);
+    --min-width: 100px;
+    --width: initial;
+    --font-size: 16px;
+    --text-align: center;
+    --border-color: transparent;
+    --border: 0px solid transparent;
+
+    button {
+        border-radius: var(--border-radius);
+        height: var(--height);
+        font-family: var(--header-font-family);
+        font-size: var(--font-size);
+        text-align: var(--text-align);
+        font-weight: bold;
+        text-transform: uppercase;
+        background-color: var(--background-color);
+        color: var(--color);
+        transition:
+            background-position .2s,
+            opacity .2s,
+            color .2s,
+            background-color .2s;
+        appearance: none;
+        border-color: var(--border-color);
+        border: var(--border);
+        min-width: var(--min-width);
+        width: var(--width);
+        background-image: linear-gradient(to bottom, var(--background-color) 50%, var(--hover-background-color) 50%);
+        background-size: 100% 200%;
+        padding: 0;
+        cursor: pointer;
+        &:not([type="link"]) {
+            padding: 0 var(--inner-padding);
+        }
+        &[type="menu"] {
+            --min-width: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+        }
+        &[type="link"] {
+            font-weight: 500;
+        }
+        &:active, &:focus {
+            outline: 0;
+        }
+        &[disabled] {
+            opacity: 0.7;
+            color: var(--color-disabled);
+            cursor: not-allowed;
+        }
+        &:not([disabled]):hover {
+            color: var(--color-hover);
+            background-color: var(--hover-background-color);
+
+            background-position: 0% -100%;
+        }
+    }
+
+}
+
+// Button: small
+// --------------------------------------------------
+:host([small]) {
+    --font-size: 14px;
+}
+
+// Button: xsmall
+// --------------------------------------------------
+:host([xsmall]) {
+    --font-size: 12px;
+}
+
+// Button: bold
+// --------------------------------------------------
+:host([bold]) {
+    button[type="link"] {
+        font-weight: bold;
+    }
+}

@@ -1,0 +1,85 @@
+// Segment Button
+// --------------------------------------------------
+:host {
+    display: flex;
+    flex: 1 0 auto;
+    flex-direction: column;
+    height: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    font-kerning: none;
+    /**
+     * @prop --height: The height of the button.
+     **/
+    --height: 50px;
+    /**
+     * @prop --min-width: The minimum width of the button.
+     **/
+    --min-width: 156px;
+    /**
+     * @prop --text-transform: The transformation style for the text of the button.
+     **/
+    --text-transform: uppercase;
+    /**
+     * @prop --font-size: The font size of the button.
+     **/
+    --font-size: 16px;
+    /**
+     * @prop --border-radius: The border radius of each edge of the button.
+     **/
+    --border-radius: 2px;
+    /**
+     * @prop --color: The foreground color of the initial state of the button.
+     **/
+    --color: var(--color-white);
+    /**
+     * @prop --background-color: The background color of the initial state of the button.
+     **/
+    --background-color: var(--color-blue);
+    /**
+     * @prop --color-hover: The hover foreground color of the button text.
+     **/
+    --color-hover: var(--color-light-blue);
+    /**
+     * @prop --background-color-hover: The hover background color of the button.
+     **/
+    --background-color-hover: var(--color-medium-blue);
+
+    button {
+        color: var(--color);
+        background: var(--background-color);
+        height: var(--height);
+        min-width: var(--min-width);
+        text-transform: var(--text-transform);
+        font-size: var(--font-size);
+        font-family: var(--header-font-family);
+        border-radius: var(--border-radius);
+        font-weight: bold;
+        appearance: none;
+        transition: all .2s;
+        border: 0;
+        background-image: linear-gradient(to bottom, var(--background-color) 50%, var(--background-color-hover) 50%);
+        background-size: 100% 200%;
+        padding: 0;
+        cursor: pointer;
+        &:not([disabled]):hover {
+            color: var(--color-hover);
+            background-color: var(--background-color-hover);
+            background-position: 0% -100%;
+        }
+    }
+}
+
+// Segment Button: Checked
+// --------------------------------------------------
+:host(.segment-button-checked) {
+    --color: var(--color-light-blue);
+    --background-color: var(--color-medium-blue);
+}
+
+// Segment Button: Disabled
+// --------------------------------------------------
+
+:host(.segment-button-disabled) {
+
+}

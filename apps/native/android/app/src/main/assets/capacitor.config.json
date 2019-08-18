@@ -1,9 +1,10 @@
 {
     "appId": "com.example.app",
-    "rootDir": "../../",
+    "rootDir": "apps/native",
     "appName": "App",
     "bundledWebRuntime": false,
-    "webDir": "dist/apps/native",
+    "webDir": "../../dist/apps/native",
+    "npmClient": "npm",
     "plugins": {
         "SplashScreen": {
             "launchShowDuration": 10000
