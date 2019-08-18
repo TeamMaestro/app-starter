@@ -13,6 +13,12 @@
     },
     "web": {
       "tags": []
+    },
+    "native-e2e": {
+      "tags": []
+    },
+    "native": {
+      "tags": []
     }
   }
 }
