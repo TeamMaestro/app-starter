@@ -21,7 +21,7 @@
     "format": "./node_modules/.bin/nx format:write",
     "format:write": "./node_modules/.bin/nx format:write",
     "format:check": "./node_modules/.bin/nx format:check",
-    "update": "ng update @nrwl/schematics",
+    "update": "ng update @nrwl/workspace",
     "update:check": "ng update",
     "workspace-schematic": "./node_modules/.bin/nx workspace-schematic",
     "dep-graph": "./node_modules/.bin/nx dep-graph",
@@ -64,7 +64,10 @@
     "rxjs": "~6.5.2",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1",
-    "@nrwl/nx": "7.4.1"
+    "@ngrx/effects": "7.2.0",
+    "@ngrx/router-store": "7.2.0",
+    "@ngrx/store": "7.2.0",
+    "@nrwl/angular": "8.0.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.802.2",
@@ -75,8 +78,6 @@
     "@nrwl/angular": "^8.2.0",
     "@nrwl/cypress": "8.2.0",
     "@nrwl/jest": "8.2.0",
-    "@nrwl/schematics": "7.4.1",
-    "@nrwl/builders": "7.4.1",
     "@stencil/core": "^1.2.3",
     "@stencil/sass": "^1.0.1",
     "@storybook/addon-actions": "^5.1.9",
@@ -108,7 +109,11 @@
     "ts-jest": "24.0.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
-    "typescript": "~3.5.3",
-    "write-file-webpack-plugin": "^4.5.0"
+    "typescript": "~3.4.5",
+    "write-file-webpack-plugin": "^4.5.0",
+    "dotenv": "6.2.0",
+    "@ngrx/schematics": "7.2.0",
+    "@ngrx/store-devtools": "7.2.0",
+    "@nrwl/workspace": "8.0.0"
   }
 }

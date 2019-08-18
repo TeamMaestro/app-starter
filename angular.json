@@ -131,6 +131,17 @@
         },
         "@nrwl/angular:library": {
             "unitTestRunner": "jest"
+        },
+        "@nrwl/schematics:library": {
+            "unitTestRunner": "karma",
+            "framework": "angular"
+        },
+        "@nrwl/schematics:application": {
+            "unitTestRunner": "karma",
+            "e2eTestRunner": "cypress"
+        },
+        "@nrwl/schematics:node-application": {
+            "framework": "express"
         }
     },
     "cli": {
