@@ -2,18 +2,19 @@ import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
 
 export const config: Config = {
-    namespace: 'ui-kit',
+    namespace: 'hive',
     outputTargets: [
         {
-            type: 'dist'
+            type: 'dist',
+            esmLoaderPath: '../loader'
         },
         {
-            type: 'www',
-            serviceWorker: null
+            type: 'docs-readme'
         }
     ],
-    plugins: [sass()],
-    enableCache: true,
-    globalStyle: 'src/global/variables.css',
-    excludeSrc: ['/test/', '**/*.md', '**/.spec.']
+    plugins: [
+        sass()
+    ],
+    globalStyle: 'src/global/global.scss',
+    excludeSrc: ['**/.stories.']
 };

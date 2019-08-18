@@ -1,14 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@ionic/angular/css/core.css';
+@import '~@ionic/angular/css/normalize.css';
+// @import '~@ionic/angular/css/structure.css';
+@import '~@ionic/angular/css/typography.css';
+@import '~@ionic/angular/css/padding.css';
+@import '~@ionic/angular/css/float-elements.css';
+@import '~@ionic/angular/css/text-alignment.css';
+@import '~@ionic/angular/css/text-transformation.css';
+@import '~@ionic/angular/css/flex-utils.css';
 
-@import '@hive/ui/dist/ui-kit.css';
+@import '@hive/ui/dist/hive/hive.css';
+@import '@hive/ui/fonts/font.css';
 
-html {
-    height: 100%;
-}
-
-body {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    min-height: 100%;
-    margin: 0;
-}

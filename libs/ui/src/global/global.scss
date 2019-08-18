@@ -1,0 +1,41 @@
+:root {
+    // Primary
+    --color-blue: #009cde;
+    --color-black: #000000;
+    --color-white: #ffffff;
+    // Core
+    --color-dark-blue: #002a3a;
+    --color-medium-blue: #004f71;
+    // Accents
+    --color-light-blue: #5bc2e7;
+    --color-mint: #64ccc9;
+    // Neutrals
+    --color-charcoal: #222731;
+    --color-dark-gray: #63666a;
+    --color-medium-gray: #888b8d;
+    --color-light-gray: #d9d9d6;
+    // Energy
+    --color-purple: #470a68;
+    --color-magenta: #aa0061;
+    --color-red: #e4002b;
+    --color-gold: #eeb33b;
+    --color-yellow: #ffd100;
+    --color-medium-yellow: #B39200;
+    --color-medium-green: #00b140;
+    --color-light-green: #7ccc6c;
+    // App
+    --color-app-light-gray: #f5f6fa;
+
+    // Viewport Constraints
+    --viewport-width: 1440px;
+    --viewport-content-width: 960px;
+
+    // Forms
+    --input-height: 35px;
+    --input-font-size: 16px;
+    --input-border-color: var(--color-light-gray);
+    --input-width: 640px;
+    --input-active-border: 1px solid var(--color-light-blue);
+}
+
+@import 'colors';

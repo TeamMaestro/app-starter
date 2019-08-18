@@ -1,0 +1,130 @@
+$colors: (
+    'blue': (
+        base: #009cde,
+        contrast: #ffffff
+    ),
+    'dark-blue': (
+        base: #002a3a,
+        contrast: #ffffff
+    ),
+    'medium-blue': (
+        base: #004f71,
+        contrast: #ffffff
+    ),
+    'light-blue': (
+        base: #5bc2e7,
+        contrast: #ffffff
+    ),
+    'mint': (
+        base: #64ccc9,
+        contrast: #ffffff
+    ),
+    'charcoal': (
+        base: #222731,
+        contrast: #ffffff
+    ),
+    'dark-gray': (
+        base: #63666a,
+        contrast: #ffffff
+    ),
+    'medium-gray': (
+        base: #888b8d,
+        contrast: #ffffff
+    ),
+    'light-gray': (
+        base: #d9d9d6,
+        contrast: #ffffff
+    ),
+    'purple': (
+        base: #470a68,
+        contrast: #ffffff
+    ),
+    'magenta': (
+        base: #aa0061,
+        contrast: #ffffff
+    ),
+    'red': (
+        base: #e4002b,
+        contrast: #ffffff
+    ),
+    'gold': (
+        base: #eeb33b,
+        contrast: #ffffff
+    ),
+    'yellow': (
+        base: #ffd100,
+        contrast: #ffffff
+    ),
+    'medium-yellow': (
+        base: #B39200,
+        contrast: #ffffff
+    ),
+    'medium-green': (
+        base: #00b140,
+        contrast: #ffffff
+    ),
+    'light-green': (
+        base: #7ccc6c,
+        contrast: #ffffff
+    ),
+    'white': (
+        base: #ffffff,
+        contrast: #000000
+    )
+);
+
+@function convertRGB($color) {
+    @return unquote('#{red($color)}, #{green($color)}, #{blue($color)}');
+}
+
+// Mixes a color with black to create its shade.
+// --------------------------------------------------------------------------------------------
+@function get-color-shade($color) {
+    @return mix(#000, $color, 12%);
+}
+
+// Mixes a color with white to create its tint.
+// --------------------------------------------------------------------------------------------
+@function get-color-tint($color) {
+    @return mix(#fff, $color, 10%);
+}
+
+@each $name,
+$color in $colors {
+    $varName: --abbott-color-#{$name};
+
+    $baseColor: map-get($color, base);
+    $contrastColor: map-get($color, contrast);
+
+    $shadeColor: map-get($color, shade);
+    $tintColor: map-get($color, tint);
+
+    :root {
+        #{$varName}: #{$baseColor};
+        #{$varName}-rgb: convertRGB($baseColor);
+        #{$varName}-contrast: #{$contrastColor};
+        #{$varName}-contrast-rgb: convertRGB($contrastColor);
+
+        #{$varName}-offset: rgba(var(#{$varName}-rgb), 0.1);
+
+        @if ($shadeColor) {
+            #{$varName}-shade: $shadeColor;
+        }
+
+        @else {
+            #{$varName}-shade: get-color-shade($baseColor);
+        }
+
+        @if ($tintColor) {
+            #{$varName}-tint: $tintColor;
+        }
+
+        @else {
+            #{$varName}-tint: get-color-tint($baseColor);
+        }
+    }
+
+    .abbott-color-#{$name} {
+        color: var(#{$varName});
+    }
+}

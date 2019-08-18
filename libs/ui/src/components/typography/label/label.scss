@@ -1,0 +1,105 @@
+
+$sizes: (
+    xxlarge: 42px,
+    xlarge: 32px,
+    large: 24px,
+    base: 16px,
+    small: 14px,
+    xsmall: 12px
+);
+
+:host {
+    display: block;
+    --max-lines: 1;
+    --line-basis: 2.0em;
+    --font-weight: 500;
+    --font-family: var(--app-font-family);
+
+    color: var(--label-color, currentColor);
+
+    span {
+        font-size: map-get($sizes, 'base');
+        font-weight: var(--font-weight);
+        display: flex;
+        align-items: center;
+        font-family: var(--font-family);
+    }
+}
+
+:host([small]) {
+    line-height: 20px;
+}
+
+:host([capitalize]) {
+    span {
+        text-transform: uppercase;
+    }
+}
+
+:host(.ellipse) span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+@each $name,
+$size in $sizes {
+    $varName: --#{$name}-font-size;
+
+    :host {
+        #{$varName}: #{$size};
+    }
+
+    :host([#{$name}]) {
+        span {
+            font-size: var(#{$varName});
+        }
+    }
+}
+
+$weights: (
+    xbold: 900,
+    bold: 700,
+    semibold: 600,
+    medium: 500,
+    book: 400
+);
+
+@each $name,
+$weight in $weights {
+    :host([#{$name}]) {
+        span {
+            font-weight: $weight;
+        }
+    }
+}
+
+$transforms: capitalize uppercase lowercase;
+
+@each $transform in $transforms {
+    :host([#{$transform}]) {
+        span {
+            text-transform: $transform;
+        }
+    }
+}
+
+// Max Lines
+:host([max-lines]) {
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+
+    // ellipse after second line - Webkit only. Max-height as backup
+    display: -webkit-box;
+    // If this property is not shut off, it is removed
+    /* autoprefixer: ignore next */
+    -webkit-box-orient: vertical;
+
+    -webkit-line-clamp: var(--max-lines);
+
+    line-height: var(--line-basis);
+    max-height: calc(var(--line-basis) * var(--max-lines));
+}

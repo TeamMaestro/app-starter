@@ -3,40 +3,16 @@
     "version": 1,
     "newProjectRoot": "",
     "projects": {
-        "common": {
-            "root": "libs/common",
-            "sourceRoot": "libs/common/src",
-            "projectType": "library",
-            "prefix": "hive",
-            "architect": {
-                "test": {
-                    "builder": "@angular-devkit/build-angular:karma",
-                    "options": {
-                        "main": "libs/common/src/test.ts",
-                        "tsConfig": "libs/common/tsconfig.spec.json",
-                        "karmaConfig": "libs/common/karma.conf.js"
-                    }
-                },
-                "lint": {
-                    "builder": "@angular-devkit/build-angular:tslint",
-                    "options": {
-                        "tsConfig": [
-                            "libs/common/tsconfig.lib.json",
-                            "libs/common/tsconfig.spec.json"
-                        ],
-                        "exclude": [
-                            "**/node_modules/**"
-                        ]
-                    }
-                }
-            }
-        },
         "web": {
-            "root": "apps/web/",
-            "sourceRoot": "apps/web/src",
             "projectType": "application",
-            "prefix": "hive",
-            "schematics": {},
+            "schematics": {
+                "@nrwl/workspace:component": {
+                    "style": "scss"
+                }
+            },
+            "root": "apps/web",
+            "sourceRoot": "apps/web/src",
+            "prefix": "app",
             "architect": {
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
@@ -46,23 +22,17 @@
                         "main": "apps/web/src/main.ts",
                         "polyfills": "apps/web/src/polyfills.ts",
                         "tsConfig": "apps/web/tsconfig.app.json",
+                        "aot": false,
                         "assets": [
                             "apps/web/src/favicon.ico",
                             "apps/web/src/assets",
                             {
                                 "glob": "**/*.svg",
-                                "input": "node_modules/@ionic/angular/dist/ionic/svg",
-                                "output": "svg"
-                            },
-                            {
-                                "glob": "**/*",
-                                "input": "i18n",
-                                "output": "assets/i18n"
+                                "input": "libs/ui/dist/hive/icons",
+                                "output": "icons"
                             }
                         ],
-                        "styles": [
-                            "apps/web/src/styles.scss"
-                        ],
+                        "styles": ["apps/web/src/styles.scss"],
                         "scripts": []
                     },
                     "configurations": {
@@ -79,12 +49,11 @@
                             "aot": true,
                             "extractLicenses": true,
                             "vendorChunk": false,
-                            "buildOptimizer": true
-                        },
-                        "hmr": {
-                            "fileReplacements": [{
-                                "replace": "apps/web/src/environments/environment.ts",
-                                "with": "apps/web/src/environments/environment.hmr.ts"
+                            "buildOptimizer": true,
+                            "budgets": [{
+                                "type": "initial",
+                                "maximumWarning": "2mb",
+                                "maximumError": "5mb"
                             }]
                         }
                     }
@@ -92,16 +61,11 @@
                 "serve": {
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "options": {
-                        "browserTarget": "web:build",
-                        "hmrWarning": false
+                        "browserTarget": "web:build"
                     },
                     "configurations": {
                         "production": {
                             "browserTarget": "web:build:production"
-                        },
-                        "hmr": {
-                            "hmr": true,
-                            "browserTarget": "web:build:hmr"
                         }
                     }
                 },
@@ -111,23 +75,6 @@
                         "browserTarget": "web:build"
                     }
                 },
-                "test": {
-                    "builder": "@angular-devkit/build-angular:karma",
-                    "options": {
-                        "main": "apps/web/src/test.ts",
-                        "polyfills": "apps/web/src/polyfills.ts",
-                        "tsConfig": "apps/web/tsconfig.spec.json",
-                        "karmaConfig": "apps/web/karma.conf.js",
-                        "styles": [
-                            "apps/web/src/styles.scss"
-                        ],
-                        "scripts": [],
-                        "assets": [
-                            "apps/web/src/favicon.ico",
-                            "apps/web/src/assets"
-                        ]
-                    }
-                },
                 "lint": {
                     "builder": "@angular-devkit/build-angular:tslint",
                     "options": {
@@ -135,21 +82,29 @@
                             "apps/web/tsconfig.app.json",
                             "apps/web/tsconfig.spec.json"
                         ],
-                        "exclude": [
-                            "**/node_modules/**"
-                        ]
+                        "exclude": ["**/node_modules/**", "!apps/web/**"]
+                    }
+                },
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "options": {
+                        "jestConfig": "apps/web/jest.config.js",
+                        "tsConfig": "apps/web/tsconfig.spec.json",
+                        "setupFile": "apps/web/src/test-setup.ts"
                     }
                 }
             }
         },
         "web-e2e": {
-            "root": "apps/web-e2e/",
+            "root": "apps/web-e2e",
+            "sourceRoot": "apps/web-e2e/src",
             "projectType": "application",
             "architect": {
                 "e2e": {
-                    "builder": "@angular-devkit/build-angular:protractor",
+                    "builder": "@nrwl/cypress:cypress",
                     "options": {
-                        "protractorConfig": "apps/web-e2e/protractor.conf.js",
+                        "cypressConfig": "apps/web-e2e/cypress.json",
+                        "tsConfig": "apps/web-e2e/tsconfig.e2e.json",
                         "devServerTarget": "web:serve"
                     },
                     "configurations": {
@@ -162,186 +117,23 @@
                     "builder": "@angular-devkit/build-angular:tslint",
                     "options": {
                         "tsConfig": "apps/web-e2e/tsconfig.e2e.json",
-                        "exclude": [
-                            "**/node_modules/**"
-                        ]
-                    }
-                }
-            }
-        },
-        "native": {
-            "root": "apps/native/",
-            "sourceRoot": "apps/native/src",
-            "projectType": "application",
-            "prefix": "hive",
-            "schematics": {},
-            "architect": {
-                "build": {
-                    "builder": "@angular-devkit/build-angular:browser",
-                    "options": {
-                        "outputPath": "dist/apps/native",
-                        "index": "apps/native/src/index.html",
-                        "main": "apps/native/src/main.ts",
-                        "polyfills": "apps/native/src/polyfills.ts",
-                        "tsConfig": "apps/native/tsconfig.app.json",
-                        "assets": [
-                            "apps/native/src/favicon.ico",
-                            "apps/native/src/assets",
-                            {
-                                "glob": "**/*.svg",
-                                "input": "node_modules/@ionic/angular/dist/ionic/svg",
-                                "output": "svg"
-                            },
-                            {
-                                "glob": "**/*",
-                                "input": "i18n",
-                                "output": "assets/i18n"
-                            }
-                        ],
-                        "styles": [
-                            "apps/native/src/theme/variables.scss",
-                            "apps/native/src/global.scss"
-                        ]
-                    },
-                    "configurations": {
-                        "production": {
-                            "fileReplacements": [{
-                                "replace": "apps/native/src/environments/environment.ts",
-                                "with": "apps/native/src/environments/environment.prod.ts"
-                            }],
-                            "optimization": true,
-                            "outputHashing": "all",
-                            "sourceMap": false,
-                            "extractCss": true,
-                            "namedChunks": false,
-                            "aot": true,
-                            "extractLicenses": true,
-                            "vendorChunk": false,
-                            "buildOptimizer": true
-                        },
-                        "hmr": {
-                            "fileReplacements": [{
-                                "replace": "apps/native/src/environments/environment.ts",
-                                "with": "apps/native/src/environments/environment.hmr.ts"
-                            }]
-                        }
-                    }
-                },
-                "serve": {
-                    "builder": "@angular-devkit/build-angular:dev-server",
-                    "options": {
-                        "browserTarget": "native:build",
-                        "hmrWarning": false
-                    },
-                    "configurations": {
-                        "production": {
-                            "browserTarget": "native:build:production"
-                        },
-                        "hmr": {
-                            "hmr": true,
-                            "browserTarget": "native:build:hmr"
-                        }
-                    }
-                },
-                "extract-i18n": {
-                    "builder": "@angular-devkit/build-angular:extract-i18n",
-                    "options": {
-                        "browserTarget": "native:build"
-                    }
-                },
-                "test": {
-                    "builder": "@angular-devkit/build-angular:karma",
-                    "options": {
-                        "main": "apps/native/src/test.ts",
-                        "polyfills": "apps/native/src/polyfills.ts",
-                        "tsConfig": "apps/native/tsconfig.spec.json",
-                        "karmaConfig": "apps/native/karma.conf.js",
-                        "styles": [
-                            "apps/native/src/global.scss"
-                        ],
-                        "scripts": [],
-                        "assets": [
-                            "apps/native/src/favicon.ico",
-                            "apps/native/src/assets"
-                        ]
-                    }
-                },
-                "lint": {
-                    "builder": "@angular-devkit/build-angular:tslint",
-                    "options": {
-                        "tsConfig": [
-                            "apps/native/tsconfig.app.json",
-                            "apps/native/tsconfig.spec.json"
-                        ],
-                        "exclude": [
-                            "**/node_modules/**"
-                        ]
-                    }
-                }
-            }
-        },
-        "native-e2e": {
-            "root": "apps/native-e2e/",
-            "projectType": "application",
-            "architect": {
-                "e2e": {
-                    "builder": "@angular-devkit/build-angular:protractor",
-                    "options": {
-                        "protractorConfig": "apps/native-e2e/protractor.conf.js",
-                        "devServerTarget": "native:serve"
-                    },
-                    "configurations": {
-                        "production": {
-                            "devServerTarget": "native:serve:production"
-                        }
-                    }
-                },
-                "lint": {
-                    "builder": "@angular-devkit/build-angular:tslint",
-                    "options": {
-                        "tsConfig": "apps/native-e2e/tsconfig.e2e.json",
-                        "exclude": [
-                            "**/node_modules/**"
-                        ]
-                    }
-                }
-            }
-        },
-        "components": {
-            "root": "libs/components",
-            "sourceRoot": "libs/components/src",
-            "projectType": "library",
-            "prefix": "hive",
-            "architect": {
-                "test": {
-                    "builder": "@angular-devkit/build-angular:karma",
-                    "options": {
-                        "main": "libs/components/src/test.ts",
-                        "tsConfig": "libs/components/tsconfig.spec.json",
-                        "karmaConfig": "libs/components/karma.conf.js"
-                    }
-                },
-                "lint": {
-                    "builder": "@angular-devkit/build-angular:tslint",
-                    "options": {
-                        "tsConfig": [
-                            "libs/components/tsconfig.lib.json",
-                            "libs/components/tsconfig.spec.json"
-                        ],
-                        "exclude": [
-                            "**/node_modules/**"
-                        ]
+                        "exclude": ["**/node_modules/**", "!apps/web-e2e/**"]
                     }
                 }
             }
         }
     },
-    "cli": {
-        "warnings": {
-            "typescriptMismatch": false,
-            "versionMismatch": false
+    "defaultProject": "web",
+    "schematics": {
+        "@nrwl/angular:application": {
+            "unitTestRunner": "jest",
+            "e2eTestRunner": "cypress"
         },
-        "defaultCollection": "@nrwl/schematics"
+        "@nrwl/angular:library": {
+            "unitTestRunner": "jest"
+        }
     },
-    "defaultProject": "web"
+    "cli": {
+        "defaultCollection": "@nrwl/angular"
+    }
 }

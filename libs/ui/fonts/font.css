@@ -1,0 +1,46 @@
+@font-face {
+    font-family: 'Brandon Grotesque';
+    font-style: normal;
+    font-weight: 300;
+    src: url('./brandon_light.woff2') format('woff2'), url('./brandon_light.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Brandon Grotesque';
+    font-style: normal;
+    font-weight: 400;
+    src: url('./brandon_reg.woff2') format('woff2'), url('./brandon_reg.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Brandon Grotesque';
+    font-style: normal;
+    font-weight: 500;
+    src: url('./brandon_med.woff2') format('woff2'), url('./brandon_med.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Brandon Grotesque';
+    font-style: normal;
+    font-weight: 700;
+    src: url('./brandon_bld.woff2') format('woff2'), url('./brandon_bld.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Brandon Grotesque';
+    font-style: normal;
+    font-weight: 900;
+    src: url('./brandon_blk.woff2') format('woff2'), url('./brandon_blk.woff') format('woff');
+}
+
+:root {
+    --header-font-family: 'Brandon Grotesque';
+    --app-font-family: 'Georgia';
+    --ion-font-family: var(--app-font-family);
+}
+
+html,
+body,
+button {
+    font-family: 'Georgia';
+}

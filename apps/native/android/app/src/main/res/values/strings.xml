@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<resources>
-    <string name="app_name">ios</string>
-    <string name="title_activity_main">ios</string>
-    <string name="package_name">com.example.app</string>
-    <string name="fileprovider_authority">com.example.app.fileprovider</string>
-    <string name="custom_url_scheme">com.example.app</string>
-</resources>
