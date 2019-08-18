@@ -32,11 +32,13 @@
 
 ### Used by
 
+ - [hive-ui-form-alert](../../form/form-alert)
  - [hive-ui-heading](../heading)
 
 ### Graph
 ```mermaid
 graph TD;
+  hive-ui-form-alert --> hive-ui-label
   hive-ui-heading --> hive-ui-label
   style hive-ui-label fill:#f9f,stroke:#333,stroke-width:4px
 ```

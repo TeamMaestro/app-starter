@@ -3,7 +3,7 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-// import { IonicModule } from '@ionic/angular';
+import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
 
 const Modules = [
@@ -13,7 +13,7 @@ const Modules = [
     RouterModule,
     TranslateModule,
     FlexLayoutModule,
-    // IonicModule
+    IonicModule
 ];
 
 const EntryComponents = [

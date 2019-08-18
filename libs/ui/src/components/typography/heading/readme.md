@@ -31,6 +31,10 @@
 
 ## Dependencies
 
+### Used by
+
+ - [hive-ui-checklist](../../form/checklist)
+
 ### Depends on
 
 - [hive-ui-label](../label)
@@ -39,6 +43,7 @@
 ```mermaid
 graph TD;
   hive-ui-heading --> hive-ui-label
+  hive-ui-checklist --> hive-ui-heading
   style hive-ui-heading fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

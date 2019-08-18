@@ -1,0 +1,55 @@
+.wrapper {
+    width: 228px;
+    height: auto;
+}
+.item-wrapper {
+    flex-direction: row;
+    display: flex;
+    justify-content: flex-start;
+    vertical-align: middle;
+    align-content: center;
+    margin: 0px 8px 0px 16px;
+    height: 36px;
+
+    hive-ui-checkbox {
+        margin: auto 5px auto 0px;
+    }
+    hive-ui-heading {
+        margin: auto 5px 0px 0px;
+        width: 100%;
+        vertical-align: middle;
+        align-content: center;
+        text-align: center;
+        padding: auto;
+        height: 27px;
+    }
+    hive-ui-badge {
+        margin: auto 3px auto 0px;
+        transform: scale(0.7);
+    }
+    .outer-box {
+        padding: 0px 2px 0px 2px;
+        height: 27px;
+        width: 39px;
+        margin: auto 0px auto 0px;
+        position: relative;
+        width: auto;
+        display: flex;
+        flex-direction: row;
+        hive-ui-heading {
+            margin: 3px 5px 0px 0px;
+            height: 27px;
+        }
+        .background {
+            border-radius: 2px;
+            position: absolute;
+            z-index: 0;
+            background-color: var(--abbott-color-yellow);
+            opacity: 0.3;
+            top: 0px;
+            left: 0px;
+            width: 39px;
+            height: 27px;
+        }
+    }
+}

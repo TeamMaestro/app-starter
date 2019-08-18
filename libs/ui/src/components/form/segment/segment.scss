@@ -1,0 +1,22 @@
+// Segment
+// --------------------------------------------------
+
+:host {
+    display: inline-flex;
+    align-items: stretch;
+    justify-content: center;
+    text-align: center;
+
+    ::slotted(hive-ui-segment-button:not(:first-child)) {
+        margin-left: 4px;
+    }
+}
+
+
+// Segment: Disabled
+// --------------------------------------------------
+
+:host(.segment-disabled),
+::slotted(.segment-button-disabled) {
+    pointer-events: none;
+}

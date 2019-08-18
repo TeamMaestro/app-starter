@@ -1,0 +1,74 @@
+:host {
+    max-width: 300px;
+    display: block;
+}
+
+label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    user-select: none;
+}
+
+// Parent element, sets size of box
+.switch {
+    position: relative;
+    width: 48px;
+    height: 25px;
+    display: inline-block;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    margin: 0px;
+}
+
+// Parent element that makes up the outside box
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-color: var(--abbott-color-light-gray);
+    transition: 0.4s;
+}
+
+.slider:before {
+    margin: auto;
+}
+
+// Background of the checked box
+input:checked + .slider {
+    background-color: var(--abbott-color-blue);
+}
+
+input:disabled + .slider:before {
+    background-color: var(--abbott-color-light-gray);
+}
+
+// Moves the slider
+input:checked + .slider:before {
+    transform: translateX(24px);
+}
+
+// Sets the parent box's rounded edges
+.slider.round {
+    border-radius: 12pt;
+}
+
+// Controls the position, size and color of the inner circle
+.slider.round:before {
+    border-radius: 50%;
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    margin: 2px 0px 2px 2px;
+    background-color: var(--abbott-color-blue-contrast);
+    transition: 0.4s;
+}
