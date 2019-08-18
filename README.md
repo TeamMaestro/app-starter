@@ -1,0 +1,74 @@
+<p align="center">
+    <img width="150px" src="https://user-images.githubusercontent.com/13732623/63229908-7d8a8100-c1d3-11e9-955e-31aff33d07e1.png">
+</p>
+
+# Hive App Starter
+
+Rapidly build web and native (iOS, Android, Desktop) applications using the latest technologies.
+
+## What is the Hive App Starter?
+
+An Angular mono-repository set-up that allows developers to seamlessly share app business logic across multiple platforms (web/native/desktop), using technologies they are familiar with: Angular, Ionic, Capacitor, and StencilJS (web components).
+
+### What makes this seed/starter useful?
+
+#### 1. Design System Architecture
+
+Design and develop re-usable web components in a design system that is previewed in Storybook with external integrations and sync operations with [InvisionApp (DSM)](https://www.invisionapp.com/design-system-manager). Works with Web, Angular and React components.
+
+
+#### 2. Nrwl/NX
+
+Use enterprise mono-repository architecture while building your application. Easily scale your code's architecture to meet your application's needs.
+
+
+#### 3. We Eat Our Own Cooking
+
+We use this app starter for every application we build. Tested, tweaked and constantly updated to developing best practices. This starter has been used for clients from Abbott Laboratories to SouthWest Airlines.
+
+
+### Underlying Technologies
+- [Angular](https://angular.io/)
+- [Nx](https://nrwl.io/nx)
+- [Ionic](https://ionicframework.com/)
+- [Capacitor](https://capacitor.ionicframework.com/)
+- [StencilJS](https://stenciljs.com/)
+- [Storybook](https://storybook.js.org)
+
+## Getting Started
+
+### Articles
+- [Testing](https://github.com/TeamHive/app-starter/wiki/Testing)
+
+#### Setup
+```
+git clone https://github.com/TeamHive/app-starter.git projectName
+cd projectName && npm i
+npm run build:ui
+```
+
+#### Running Web
+```
+npm run start
+```
+
+#### Running Native (serving)
+```
+npm run start:native
+```
+
+#### Building Native
+```
+npm run build:native
+```
+
+#### Running Native (iOS)
+```
+npm run update:ios && npm run open:ios
+```
+
+### Contributors
+
+[<img alt="Sean Perkins" src="https://avatars1.githubusercontent.com/u/13732623?v=4&s=117" width="117">](https://github.com/sean-perkins) |
+:---:
+|[Sean Perkins](https://github.com/sean-perkins)|
