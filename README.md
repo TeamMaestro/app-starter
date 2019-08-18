@@ -34,11 +34,10 @@ We use this app starter for every application we build. Tested, tweaked and cons
 - [Capacitor](https://capacitor.ionicframework.com/)
 - [StencilJS](https://stenciljs.com/)
 - [Storybook](https://storybook.js.org)
+- [Firebase](https://firebase.google.com)
+- [Algolia](https://www.algolia.com/)
 
 ## Getting Started
-
-### Articles
-- [Testing](https://github.com/TeamHive/app-starter/wiki/Testing)
 
 #### Setup
 ```
@@ -46,6 +45,8 @@ git clone https://github.com/TeamHive/app-starter.git projectName
 cd projectName && npm i
 npm run build:ui
 ```
+
+> You can optionally find-replace `hive` and `app` for your own project's scope. Try to keep your scope between 3-5 characters.
 
 #### Running Web
 ```
