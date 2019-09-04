@@ -10,12 +10,51 @@ const fs = require('fs');
 const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
 const WriteFilePlugin = require('write-file-webpack-plugin');
+const css = require('css');
+const webpack = require('webpack');
 
 let jsFilePath: string;
 let cssFilePath: string;
-let cssFontFilePath: string;
+let cssGlobalFilePath: string;
 
 const uiDistPath = 'libs/ui/dist';
+
+interface ParsedCSS {
+    stylesheet: {
+        rules: {
+            type: string;
+            declarations: {
+                property: string;
+                value: string;
+            }[];
+        }[];
+    };
+}
+
+function getFontFaces(fontFaceCss: string) {
+    const cssObject = css.parse(
+        fontFaceCss,
+        path.join(__dirname, `../libs/ui/fonts/font.css`)
+    ) as ParsedCSS;
+    return cssObject.stylesheet.rules
+        .filter(rule => rule.type === 'font-face')
+        .map(rule => {
+            const fontFace = rule.declarations.reduce(
+                (obj, item) => ((obj[item.property] = item.value), obj),
+                {}
+            ) as any;
+            return {
+                // tslint:disable-next-line:no-eval
+                family: eval(fontFace['font-family']),
+                // tslint:disable-next-line:no-eval
+                source: eval(/\(([^)]+)\)/.exec(fontFace.src)[1]),
+                descriptors: {
+                    style: fontFace['font-style'],
+                    weight: fontFace['font-weight']
+                }
+            };
+        });
+}
 
 module.exports = async ({ config }) => {
     fs.readdirSync(
@@ -46,15 +85,48 @@ module.exports = async ({ config }) => {
         }
     });
 
+    cssGlobalFilePath = path.join(__dirname, `../${uiDistPath}/hive/hive.css`);
+    try {
+        if (fs.existsSync(cssGlobalFilePath)) {
+            config.entry.push(cssGlobalFilePath);
+        }
+    } catch (err) {
+        console.error(err);
+    }
+
+    const fontStylesheet = fs.readFileSync(
+        path.join(__dirname, `../libs/ui/fonts/font.css`),
+        'utf8'
+    );
+
     config.plugins.push(
         new CopyPlugin([
             {
-                from: '**/*',
+                from: 'hive.css',
                 to: './',
-                context: uiDistPath
+                context: `${uiDistPath}/hive`
+            },
+            {
+                from: '**/*',
+                to: './fonts',
+                context: `libs/ui/fonts`
             }
         ])
     );
+
+    if (process.env.STORYBOOK_DSM) {
+        config.entry.push(
+            path.join(__dirname, 'dsm-helpers/dsm-asset-helper.js')
+        );
+        config.entry.push(
+            path.join(__dirname, 'dsm-helpers/dsm-font-loader.js')
+        );
+        config.plugins.push(
+            new webpack.DefinePlugin({
+                DSM_FONT_CONFIG: JSON.stringify(getFontFaces(fontStylesheet))
+            })
+        );
+    }
 
     config.plugins.push(new WriteFilePlugin());
 
