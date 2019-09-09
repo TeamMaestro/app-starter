@@ -25,7 +25,6 @@ addDecorator(
     })
 );
 
-
 import theme from './theme';
 
 addParameters({
@@ -37,13 +36,15 @@ addParameters({
 function loadStories() {
     const paths = [
         require.context('../apps/web', true, /\.stories\.ts$/),
+        require.context('../apps/native', true, /\.stories\.ts$/),
         require.context('../libs/ui', true, /\.stories\.ts$/)
     ];
     paths.forEach(req => {
         req.keys().forEach(filename => req(filename));
-    })
+    });
 
-    // require('@ionic/core/loader/index.cjs.js').defineCustomElements(window);
+    require('../libs/ui/loader/index.cjs.js').defineCustomElements(window);
+    require('@ionic/core/loader/index.cjs.js').defineCustomElements(window);
 }
 
 if (process.env.STORYBOOK_DSM) {

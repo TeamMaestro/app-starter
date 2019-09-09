@@ -1,0 +1,7 @@
+{
+    "authToken": "YOUR_AUTH_TOKEN",
+    "dsmHost": "YOUR_DSM_HOST",
+    "organization": "YOUR_ORGANIZATION",
+    "outputDir": ".dsm",
+    "storyPath": "**/*.stories.ts"
+}
