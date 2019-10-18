@@ -36,26 +36,26 @@ export class Button {
     hostData() {
         const style = {};
         if (this.color) {
-            style['--background-color'] = `var(--abbott-color-${this.color})`;
+            style['--background-color'] = `var(--app-color-${this.color})`;
             // If the color is white - set necessary color defaults
             if (this.color === 'white') {
-                style['--color'] = 'var(--abbott-color-blue)';
-                style['--color-hover'] = 'var(--abbott-color-blue)';
+                style['--color'] = 'var(--app-color-blue)';
+                style['--color-hover'] = 'var(--app-color-blue)';
                 style['--color-disabled'] = 'var(--color-medium-gray)';
                 style['--hover-background-color'] = 'var(--color-light-gray)';
                 style['--background-color'] = 'var(--color-app-light-gray)';
             }
 
             if (this.type === 'link') {
-                style['--color'] = `var(--abbott-color-${this.color})`;
-                style['--color-hover'] = `var(--abbott-color-${this.color}-tint)`;
+                style['--color'] = `var(--app-color-${this.color})`;
+                style['--color-hover'] = `var(--app-color-${this.color}-tint)`;
                 style['--background-color'] = 'transparent';
                 style['--hover-background-color'] = 'transparent';
             }
 
             if (this.type === 'menu') {
-                style['--color'] = `var(--abbott-color-${this.color})`;
-                style['--color-hover'] = `var(--abbott-color-${this.color}-tint)`;
+                style['--color'] = `var(--app-color-${this.color})`;
+                style['--color-hover'] = `var(--app-color-${this.color}-tint)`;
                 style['--background-color'] = 'transparent';
                 style['--hover-background-color'] = 'var(--color-app-light-gray)';
                 style['--border'] = '1px solid var(--color-medium-gray)';

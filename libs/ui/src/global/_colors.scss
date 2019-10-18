@@ -91,7 +91,7 @@ $colors: (
 
 @each $name,
 $color in $colors {
-    $varName: --abbott-color-#{$name};
+    $varName: --app-color-#{$name};
 
     $baseColor: map-get($color, base);
     $contrastColor: map-get($color, contrast);
@@ -124,7 +124,7 @@ $color in $colors {
         }
     }
 
-    .abbott-color-#{$name} {
+    .app-color-#{$name} {
         color: var(#{$varName});
     }
 }

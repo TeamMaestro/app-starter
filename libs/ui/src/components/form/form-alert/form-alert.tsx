@@ -29,8 +29,8 @@ export class FormAlert {
     render() {
         return (
             <Host style={{
-                '--background-color': `var(--abbott-color-${this.backgroundColor}-rgb)`,
-                '--color': `var(--abbott-color-${this.backgroundColor})`
+                '--background-color': `var(--app-color-${this.backgroundColor}-rgb)`,
+                '--color': `var(--app-color-${this.backgroundColor})`
             }}>
                 <div class='alert'>
                     <div class='alert-icon'>

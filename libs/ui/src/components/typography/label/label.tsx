@@ -51,7 +51,7 @@ export class Label {
             style['--max-lines'] = this.maxLines;
         }
         if (this.color) {
-            style['--label-color'] = `var(--abbott-color-${this.color})`;
+            style['--label-color'] = `var(--app-color-${this.color})`;
         }
         if (this.type) {
             if (this.type === 'label') {

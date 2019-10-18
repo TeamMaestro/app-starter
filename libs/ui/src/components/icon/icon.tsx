@@ -103,7 +103,7 @@ export class Icon {
     render() {
         const style = {};
         if (this.color) {
-            style['--color'] = `var(--abbott-color-${this.color})`;
+            style['--color'] = `var(--app-color-${this.color})`;
         }
         return (
             <Host role='img'

@@ -34,7 +34,7 @@ label {
     left: 0px;
     right: 0px;
     bottom: 0px;
-    background-color: var(--abbott-color-light-gray);
+    background-color: var(--app-color-light-gray);
     transition: 0.4s;
 }
 
@@ -44,11 +44,11 @@ label {
 
 // Background of the checked box
 input:checked + .slider {
-    background-color: var(--abbott-color-blue);
+    background-color: var(--app-color-blue);
 }
 
 input:disabled + .slider:before {
-    background-color: var(--abbott-color-light-gray);
+    background-color: var(--app-color-light-gray);
 }
 
 // Moves the slider
@@ -69,6 +69,6 @@ input:checked + .slider:before {
     height: 20px;
     width: 20px;
     margin: 2px 0px 2px 2px;
-    background-color: var(--abbott-color-blue-contrast);
+    background-color: var(--app-color-blue-contrast);
     transition: 0.4s;
 }

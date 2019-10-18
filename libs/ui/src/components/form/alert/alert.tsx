@@ -13,7 +13,7 @@ export class Alert {
     hostData() {
         const style = {};
         if (this.color) {
-            style['--background-color'] = `var(--abbott-color-${this.color})`;
+            style['--background-color'] = `var(--app-color-${this.color})`;
         }
 
         return {
