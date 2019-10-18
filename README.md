@@ -75,6 +75,6 @@ npm run storybook
 
 ### Contributors
 
-[<img alt="Sean Bannigan" src="https://avatars1.githubusercontent.com/u/15218748?s=460&v=4" width="117">](https://github.com/sbannigan) | [<img alt="Sean Perkins" src="https://avatars1.githubusercontent.com/u/13732623?v=4&s=117" width="117">](https://github.com/sean-perkins) |[<img alt="Kasun harshana peiris" src="https://avatars1.githubusercontent.com/u/24228836?s=460&v=4" width="117">](https://github.com/bbjdt2224)  |
+[<img alt="Sean Bannigan" src="https://avatars1.githubusercontent.com/u/15218748?s=460&v=4" width="117">](https://github.com/sbannigan) | [<img alt="Sean Perkins" src="https://avatars1.githubusercontent.com/u/13732623?v=4&s=117" width="117">](https://github.com/sean-perkins) |[<img alt="Kasun harshana peiris" src="https://avatars1.githubusercontent.com/u/24228836?s=460&v=4" width="117">](https://github.com/peiris)  |
 :---:|:---:|:---:
 |[Sean Bannigan](https://github.com/sean-perkins)|[Sean Perkins](https://github.com/sean-perkins)|[Kasun harshana peiris](https://github.com/peiris)
