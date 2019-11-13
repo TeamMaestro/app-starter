@@ -101,14 +101,7 @@
                         "tsConfig": "apps/web/tsconfig.spec.json",
                         "setupFile": "apps/web/src/test-setup.ts"
                     }
-                }
-            }
-        },
-        "web-e2e": {
-            "root": "apps/web-e2e",
-            "sourceRoot": "apps/web-e2e/src",
-            "projectType": "application",
-            "architect": {
+                },
                 "e2e": {
                     "builder": "@nrwl/cypress:cypress",
                     "options": {
@@ -120,16 +113,6 @@
                         "production": {
                             "devServerTarget": "web:serve:production"
                         }
-                    }
-                },
-                "lint": {
-                    "builder": "@angular-devkit/build-angular:tslint",
-                    "options": {
-                        "tsConfig": "apps/web-e2e/tsconfig.e2e.json",
-                        "exclude": [
-                            "**/node_modules/**",
-                            "!apps/web-e2e/**"
-                        ]
                     }
                 }
             }
@@ -231,14 +214,7 @@
                         "tsConfig": "apps/native/tsconfig.spec.json",
                         "setupFile": "apps/native/src/test-setup.ts"
                     }
-                }
-            }
-        },
-        "native-e2e": {
-            "root": "apps/native-e2e",
-            "sourceRoot": "apps/native-e2e/src",
-            "projectType": "application",
-            "architect": {
+                },
                 "e2e": {
                     "builder": "@nrwl/cypress:cypress",
                     "options": {
@@ -250,16 +226,6 @@
                         "production": {
                             "devServerTarget": "native:serve:production"
                         }
-                    }
-                },
-                "lint": {
-                    "builder": "@angular-devkit/build-angular:tslint",
-                    "options": {
-                        "tsConfig": "apps/native-e2e/tsconfig.e2e.json",
-                        "exclude": [
-                            "**/node_modules/**",
-                            "!apps/native-e2e/**"
-                        ]
                     }
                 }
             }
